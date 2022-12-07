@@ -28,7 +28,7 @@ bulk_ase = bulk_db_atoms_list[bulk_idx]
 bulk_formula = bulk_ase.symbols.get_chemical_formula()
 print('bulk_formula: ', bulk_formula)
 # view(bulk_ase)
-write(output_folder + 'bulk_'+ bulk_formula +'.eps', bulk_ase)
+write(output_folder + 'bulk_'+ bulk_formula +'.png', bulk_ase, rotation='10z,-80x')
 # %% cut surface
 possible_surfaces = enumerate_surfaces_for_saving(bulk_ase)
 num_surfaces = len(possible_surfaces)
@@ -39,7 +39,7 @@ for bulk_idx in range(num_surfaces):
     miller = possible_surfaces[bulk_idx][1]
     shift = possible_surfaces[bulk_idx][2]
     surface_ase = AseAtomsAdaptor.get_atoms(possible_surfaces[bulk_idx][0])
-    write(output_folder + 'bulk_' + bulk_formula +'_surface_miller' +str(miller) + '_shift_'+ str(shift)+'.eps', surface_ase)
+    write(output_folder + 'bulk_' + bulk_formula +'_surface_miller' +str(miller) + '_shift_'+ str(shift)+'.png', surface_ase, rotation='10z,-80x')
 
 # %% write to vasp input file
 # #%%
