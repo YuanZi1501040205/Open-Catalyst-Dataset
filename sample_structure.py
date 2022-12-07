@@ -14,11 +14,12 @@ def parse_args():
     parser.add_argument('--output_dir', type=str, required=True, help='Root directory for outputs')
 
     # for optimized (automatically try to use optimized if this is provided)
-    parser.add_argument('--precomputed_structures', type=str, default=None, help='Root directory of precomputed structures')
+    parser.add_argument('--precomputed_structures', type=str, default=None,
+                        help='Root directory of precomputed structures')
 
     # args for enumerating all combinations:
     parser.add_argument('--enumerate_all_structures', action='store_true', default=False,
-        help='Find all possible structures given a specific adsorbate and a list of bulks')
+                        help='Find all possible structures given a specific adsorbate and a list of bulks')
     parser.add_argument('--adsorbate_index', type=int, default=None, help='Adsorbate index (int)')
     parser.add_argument('--bulk_indices', type=str, default=None, help='Comma separated list of bulk indices')
     parser.add_argument('--surface_index', type=int, default=None, help='Optional surface index (int)')
@@ -32,10 +33,12 @@ def parse_args():
             parser.error('Enumerating all structures requires specified adsorbate and bulks')
 
     elif args.seed is None:
-            parser.error('Seed is required when sampling one random structure')
+        parser.error('Seed is required when sampling one random structure')
     return args
+
 
 if __name__ == '__main__':
     args = parse_args()
     job = StructureSampler(args)
     job.run()
+
